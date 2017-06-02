@@ -24,9 +24,11 @@
   "dependencies": {
     "@types/react": "^15.0.25",
     "@types/react-dom": "^15.5.0",
+    "lodash": "^4.17.4",
     "react": "^15.5.4",
     "react-copy-to-clipboard": "^5.0.0",
-    "react-dom": "^15.5.4"
+    "react-dom": "^15.5.4",
+    "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
     "awesome-typescript-loader": "^3.1.3",

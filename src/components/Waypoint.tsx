@@ -1,6 +1,11 @@
 import * as React from 'react';
 import {IdToChatCode} from '../utils/base64ToHex';
+import { POI } from '../utils/mapMarkerFilters';
 import * as CopyToClipboard from 'react-copy-to-clipboard';
+
+export interface WaypointSelectionProps {
+    pois: POI[]
+}
 
 export interface WaypointProps {
   name: string;
@@ -9,6 +14,16 @@ export interface WaypointProps {
 
 interface WaypointState {
     copied: boolean;
+}
+
+export class WaypointSelection extends React.Component<WaypointSelectionProps, undefined> {
+    render() {
+        return <ul>
+            {this.props.pois.map(poi => {
+                return <li key={poi.poi_id}><Waypoint id={poi.poi_id} name={poi.name} /></li>
+            })}
+        </ul>
+    }
 }
 
 export class Waypoint extends React.Component<WaypointProps, WaypointState> {

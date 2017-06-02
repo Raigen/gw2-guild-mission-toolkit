@@ -1,10 +1,10 @@
 import * as React from 'react';
-import {Waypoint} from './Waypoint';
+import {Waypoint, WaypointSelection} from './Waypoint';
 
 export interface GuildTrekProps {};
 
 export class GuildTrek extends React.Component<GuildTrekProps, undefined> {
     render() {
-        return <Waypoint name="Blabla" id={338}/>
+        return <WaypointSelection pois={(window as any).waypoints} />
     }
 }
