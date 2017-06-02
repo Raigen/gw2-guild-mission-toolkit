@@ -1,9 +1,10 @@
 import * as React from 'react';
+import {IdToChatCode} from '../utils/base64ToHex';
 import * as CopyToClipboard from 'react-copy-to-clipboard';
 
 export interface WaypointProps {
   name: string;
-  code: string;
+  id: number;
 };
 
 interface WaypointState {
@@ -21,7 +22,8 @@ export class Waypoint extends React.Component<WaypointProps, WaypointState> {
     }
 
     render() {
-        const {name, code} = this.props
+        const {name, id} = this.props
+        const code = IdToChatCode(id);
         return <span>
             {name}
             <CopyToClipboard text={code} onCopy={() => this.setCopied()}>
