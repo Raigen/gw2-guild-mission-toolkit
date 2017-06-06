@@ -1,4 +1,4 @@
-import {flattenDeep} from 'lodash';
+import {flattenDeep, uniqBy} from 'lodash';
 
 export interface POI {
     coord: number[];
@@ -27,11 +27,11 @@ function filterWaypoints(a: any): boolean {
 }
 
 export function getWaypoints(raw: MapFloor): POI[] {
-    return flattenDeep(Object.keys(raw.regions).map(regionKey => {
+    return uniqBy<POI>(flattenDeep<POI>(Object.keys(raw.regions).map(regionKey => {
         const region = raw.regions[regionKey];
         return Object.keys(region.maps).map(mapKey => {
             const map = region.maps[mapKey];
             return map.points_of_interest.filter(filterWaypoints)
         })
-    }))
+    })), 'poi_id')
 }
