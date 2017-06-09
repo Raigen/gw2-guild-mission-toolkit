@@ -6,9 +6,18 @@ export interface POI {
     name: string;
     poi_id: number;
     type: string;
+    mapKey: number;
+}
+
+interface RawPOI {
+    coord: number[];
+    floor: number;
+    name: string;
+    poi_id: number;
+    type: string;
 }
 interface RegionMap {
-    points_of_interest: POI[]
+    points_of_interest: RawPOI[]
 }
 interface Region {
     maps: {
@@ -31,7 +40,9 @@ export function getWaypoints(raw: MapFloor): POI[] {
         const region = raw.regions[regionKey];
         return Object.keys(region.maps).map(mapKey => {
             const map = region.maps[mapKey];
-            return map.points_of_interest.filter(filterWaypoints)
+            return map.points_of_interest
+                .filter(filterWaypoints)
+                .map((rawPoi: RawPOI) => ({...rawPoi, mapKey: Number.parseInt(mapKey)}))
         })
     })), 'poi_id')
 }

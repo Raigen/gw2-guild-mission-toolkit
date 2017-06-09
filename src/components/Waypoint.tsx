@@ -1,10 +1,18 @@
+import * as CopyToClipboard from 'react-copy-to-clipboard';
 import * as React from 'react';
+
+import AutoComplete from 'material-ui/AutoComplete';
 import {IdToChatCode} from '../utils/base64ToHex';
 import { POI } from '../utils/mapMarkerFilters';
-import * as CopyToClipboard from 'react-copy-to-clipboard';
 
 export interface WaypointSelectionProps {
-    pois: POI[]
+    pois: POI[];
+    mapKey?: number;
+    onWaypointSelected?: (poi: POI) => void;
+}
+interface WaypointSelectionState {
+    searchText: string;
+    selectedId: number;
 }
 
 export interface WaypointProps {
@@ -16,13 +24,37 @@ interface WaypointState {
     copied: boolean;
 }
 
-export class WaypointSelection extends React.Component<WaypointSelectionProps, undefined> {
+export class WaypointSelection extends React.Component<WaypointSelectionProps, WaypointSelectionState> {
+    state = {
+        searchText: '',
+        selectedId: 0
+    }
+    waypointSelected(waypoint: {text: string, value: number}) {
+        this.setState({
+            searchText: waypoint.text,
+            selectedId: waypoint.value
+        });
+        const selectedPoi = this.props.pois.find(poi => poi.poi_id === waypoint.value);
+
+        if (this.props.onWaypointSelected && selectedPoi) {
+            this.props.onWaypointSelected(selectedPoi);
+        }
+    }
+    handleNewRequest = (waypoint: any) => this.waypointSelected(waypoint)
+
     render() {
-        return <ul>
-            {this.props.pois.map(poi => {
-                return <li key={poi.poi_id}><Waypoint id={poi.poi_id} name={poi.name} /></li>
-            })}
-        </ul>
+        const pois = this.props.mapKey
+            ? this.props.pois.filter(poi => poi.mapKey === this.props.mapKey)
+            : this.props.pois;
+        return <div>
+            <AutoComplete
+                hintText="waypoints"
+                searchText={this.state.searchText}
+                maxSearchResults={5}
+                onNewRequest={this.handleNewRequest}
+                dataSource={pois.map(poi => ({text: poi.name, value: poi.poi_id}))}
+            />
+        </div>
     }
 }
 
