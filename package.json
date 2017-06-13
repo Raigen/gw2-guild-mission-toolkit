@@ -4,7 +4,7 @@
   "description": "A toolkit for helping guilds managing and leading their guild missions.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "webpack",
     "start": "webpack && node index.js"
   },
   "repository": {
