@@ -6,6 +6,7 @@ import {Waypoint, WaypointProps, WaypointSelection} from './Waypoint';
 import DeleteIcon from 'material-ui/svg-icons/action/delete';
 import Divider from 'material-ui/Divider';
 import IconButton from 'material-ui/IconButton';
+import { Link } from 'react-router-dom'
 import { POI } from '../utils/mapMarkerFilters';
 
 export interface GuildBountyPath {
@@ -85,6 +86,11 @@ export class GuildBounty extends React.Component<GuildBountyProps, undefined> {
     render() {
         return <div>
             <h1>Guild Bounty</h1>
+            <ul>
+                <li><Link to="/bounty?diff=1">leicht</Link></li>
+                <li><Link to="/bounty?diff=2">mittel</Link></li>
+                <li><Link to="/bounty?diff=3">schwer</Link></li>
+            </ul>
             <List>
                 {targets
                     .filter(target => target.difficulty <= this.props.difficulty)
