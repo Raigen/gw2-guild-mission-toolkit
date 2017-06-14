@@ -10,7 +10,7 @@ import App from './App'
 
 injectTapEventPlugin();
 
-window.fetch('https://api.guildwars2.com/v1/map_floor.json?continent_id=1&floor=1&lang=de')
+window.fetch('/map_floor.json')
     .then(response => response.json())
     .then((data: MapFloor) => getWaypoints(data))
     .then(waypoints => (window as any).waypoints = waypoints)
