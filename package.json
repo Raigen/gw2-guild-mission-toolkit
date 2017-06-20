@@ -4,7 +4,8 @@
   "description": "A toolkit for helping guilds managing and leading their guild missions.",
   "main": "index.js",
   "scripts": {
-    "test": "webpack",
+    "test": "npm run lint && webpack",
+    "lint": "tslint -p ./",
     "start": "webpack && node index.js"
   },
   "repository": {
@@ -47,6 +48,8 @@
     "react-tap-event-plugin": "^2.0.1",
     "serve-static": "^1.12.3",
     "source-map-loader": "^0.2.1",
+    "tslint": "^5.4.3",
+    "tslint-config-standard": "^6.0.1",
     "typescript": "^2.3.4",
     "webpack": "^2.6.1",
     "whatwg-fetch": "^2.0.3",

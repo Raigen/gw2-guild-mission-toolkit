@@ -1,48 +1,48 @@
-import {flattenDeep, uniqBy} from 'lodash';
+import {flattenDeep, uniqBy} from 'lodash'
 
 export interface POI {
-    coord: number[];
-    floor: number;
-    name: string;
-    poi_id: number;
-    type: string;
-    mapKey: number;
+  coord: number[]
+  floor: number
+  name: string
+  poi_id: number
+  type: string
+  mapKey: number
 }
 
 interface RawPOI {
-    coord: number[];
-    floor: number;
-    name: string;
-    poi_id: number;
-    type: string;
+  coord: number[]
+  floor: number
+  name: string
+  poi_id: number
+  type: string
 }
 interface RegionMap {
-    points_of_interest: RawPOI[]
+  points_of_interest: RawPOI[]
 }
 interface Region {
-    maps: {
-        [x: string]: RegionMap
-    }
+  maps: {
+    [x: string]: RegionMap
+  }
 }
 
 export interface MapFloor {
-    regions: {
-        [x: string]: Region
-    }
+  regions: {
+    [x: string]: Region
+  }
 }
 
-function filterWaypoints(a: any): boolean {
-    return a.type === 'waypoint'
+function filterWaypoints (a: any): boolean {
+  return a.type === 'waypoint'
 }
 
-export function getWaypoints(raw: MapFloor): POI[] {
-    return uniqBy<POI>(flattenDeep<POI>(Object.keys(raw.regions).map(regionKey => {
-        const region = raw.regions[regionKey];
-        return Object.keys(region.maps).map(mapKey => {
-            const map = region.maps[mapKey];
-            return map.points_of_interest
+export function getWaypoints (raw: MapFloor): POI[] {
+  return uniqBy<POI>(flattenDeep<POI>(Object.keys(raw.regions).map(regionKey => {
+    const region = raw.regions[regionKey]
+    return Object.keys(region.maps).map(mapKey => {
+      const map = region.maps[mapKey]
+      return map.points_of_interest
                 .filter(filterWaypoints)
                 .map((rawPoi: RawPOI) => ({...rawPoi, mapKey: Number.parseInt(mapKey)}))
-        })
-    })), 'poi_id')
+    })
+  })), 'poi_id')
 }

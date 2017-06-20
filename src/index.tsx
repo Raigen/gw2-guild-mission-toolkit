@@ -1,4 +1,4 @@
-import 'whatwg-fetch';
+import 'whatwg-fetch'
 
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
@@ -8,15 +8,16 @@ import { MapFloor, getWaypoints } from './utils/mapMarkerFilters'
 
 import App from './App'
 
-injectTapEventPlugin();
+injectTapEventPlugin()
 
 window.fetch('/map_floor.json')
-    .then(response => response.json())
-    .then((data: MapFloor) => getWaypoints(data))
-    .then(waypoints => (window as any).waypoints = waypoints)
-    .then(() => {
-        ReactDOM.render(
-            <App />,
-            document.querySelector('body')
-        );
-    })
+  .then(response => response.json())
+  .then((data: MapFloor) => getWaypoints(data))
+  .then(waypoints => (window as any).waypoints = waypoints)
+  .then(() => {
+    ReactDOM.render(
+      <App />,
+      document.querySelector('body')
+    )
+  })
+  .catch(err => console.error(err))

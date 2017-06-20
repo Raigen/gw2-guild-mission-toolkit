@@ -6,7 +6,12 @@
         "module": "es6",
         "target": "es2016",
         "jsx": "react",
-        "allowJs": true
+        "allowJs": true,
+        "plugins": [
+            {
+                "name": "tslint-language-service"
+            }
+        ]
     },
     "include": [
         "./src/**/*",
