@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { Link, Route, BrowserRouter as Router } from 'react-router-dom'
+import { Link, Route, RouteComponentProps, BrowserRouter as Router } from 'react-router-dom'
 
 import { GuildBounty } from './components/GuildBounty'
 import { GuildTrek } from './components/GuildTrek'
@@ -17,8 +17,8 @@ const Home = () =>
     <h2>Home</h2>
   </div>
 
-const Bounty = () => {
-  const params = new URLSearchParams(document.location.search)
+const Bounty = (props: RouteComponentProps<undefined>) => {
+  const params = new URLSearchParams(location.search)
   const difficulty = params.has('diff')
     ? Number.parseInt(params.get('diff'), 10)
     : 3
