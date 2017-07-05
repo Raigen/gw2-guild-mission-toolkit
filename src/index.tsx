@@ -7,6 +7,7 @@ import * as injectTapEventPlugin from 'react-tap-event-plugin'
 import { MapFloor, getWaypoints } from './utils/mapMarkerFilters'
 
 import App from './App'
+import { BrowserRouter } from 'react-router-dom'
 
 injectTapEventPlugin()
 
@@ -16,7 +17,9 @@ window.fetch('/map_floor.json')
   .then(waypoints => (window as any).waypoints = waypoints)
   .then(() => {
     ReactDOM.render(
-      <App />,
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>,
       document.querySelector('body')
     )
   })

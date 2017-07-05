@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { Link, Route, RouteComponentProps, BrowserRouter as Router } from 'react-router-dom'
+import { Link, Route, RouteComponentProps } from 'react-router-dom'
 
 import { GuildBounty } from './components/GuildBounty'
 import { GuildTrek } from './components/GuildTrek'
@@ -28,7 +28,6 @@ const Bounty = (props: RouteComponentProps<undefined>) => {
 const Trek = () => <GuildTrek />
 
 const App = () =>
-  <Router>
     <MuiThemeProvider>
       <div>
         <ul>
@@ -42,6 +41,5 @@ const App = () =>
         <Route path='/trek' component={Trek} />
       </div>
     </MuiThemeProvider>
-  </Router>
 
 export default App
