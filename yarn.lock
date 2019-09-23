@@ -6,9 +6,10 @@
   version "4.5.2"
   resolved "https://registry.yarnpkg.com/@types/history/-/history-4.5.2.tgz#7739c850b7a5de94221accb352f9cabd1bcabe7c"
 
-"@types/lodash@^4.14.65":
-  version "4.14.65"
-  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.65.tgz#a0f78d71ffcd3c02628d5f616410c98c424326d5"
+"@types/lodash@^4.14.139":
+  version "4.14.139"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.139.tgz#b7b8a00d014a7debb29dc2dae4f91d3d3c6d5ab3"
+  integrity sha512-Z6pbDYaWpluqcF8+6qgv6STPEl0jIlyQmpYGwTrzhgwqok8ltBh/p7GAmYnz81wUhxQRhEr8MBpQrB4fQ/hwIA==
 
 "@types/material-ui@^0.17.10":
   version "0.17.10"
