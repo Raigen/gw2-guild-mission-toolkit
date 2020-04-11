@@ -35,9 +35,10 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react-router-dom@^4.0.4":
-  version "4.0.4"
-  resolved "https://registry.yarnpkg.com/@types/react-router-dom/-/react-router-dom-4.0.4.tgz#49f4a7037958f743e764b807fcbc8062fe46e493"
+"@types/react-router-dom@^5.1.4":
+  version "5.1.4"
+  resolved "https://registry.yarnpkg.com/@types/react-router-dom/-/react-router-dom-5.1.4.tgz#8d3e0306df74af301cc896309e7d4758f1a4bf71"
+  integrity sha512-LO0z5qqSfWdYtCNsRm8/OMnnkv52hwADJKrAfpKIyfHclORllcgAMGypEA7ajHm38+jOonKLx8nPygNAAZGxtg==
   dependencies:
     "@types/history" "*"
     "@types/react" "*"
